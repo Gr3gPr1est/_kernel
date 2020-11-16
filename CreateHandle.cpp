@@ -4,7 +4,7 @@
 #include <windows.h>
 
 int main() {
-    HANDLE hCng = CreateFileA("\\\\.\\GLOBALROOT\\Device\\????",
+    HANDLE hDev = CreateFileA("\\\\.\\GLOBALROOT\\Device\\????",
         GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
 
     if (hCng == NULL) {
@@ -41,7 +41,7 @@ int main() {
     ULONG_PTR OutputBuffer = 0;
     DWORD BytesReturned;
     BOOL Status = DeviceIoControl(
-        hCng,
+        hDev,
         0x390400,
         IoctlData,
         IoctlSize,
